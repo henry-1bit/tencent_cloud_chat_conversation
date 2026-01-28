@@ -5,7 +5,7 @@ import 'package:tencent_cloud_chat_common/components/components_definition/tence
 import 'package:tencent_cloud_chat_common/data/basic/tencent_cloud_chat_basic_data.dart';
 import 'package:tencent_cloud_chat_common/data/group_profile/tencent_cloud_chat_group_profile_data.dart';
 import 'package:tencent_cloud_chat_common/tencent_cloud_chat.dart';
-import 'package:tencent_cloud_chat_conversation/model/tencent_cloud_chat_conversation_presenter.dart';
+import 'package:tencent_cloud_chat_conversation/src/model/tencent_cloud_chat_conversation_presenter.dart';
 
 class TencentCloudChatConversationController extends TencentCloudChatComponentBaseController {
   static const String _tag = "TencentCloudChatConversationController";

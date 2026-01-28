@@ -8,7 +8,7 @@ import 'package:tencent_cloud_chat_common/utils/tencent_cloud_chat_utils.dart';
 import 'package:tencent_cloud_chat_common/base/tencent_cloud_chat_state_widget.dart';
 import 'package:tencent_cloud_chat_common/base/tencent_cloud_chat_theme_widget.dart';
 import 'package:tencent_cloud_chat_common/widgets/shimmer/tencent_cloud_chat_list_shimmer.dart';
-import 'package:tencent_cloud_chat_conversation/widgets/tencent_cloud_chat_conversation_item.dart';
+import 'package:tencent_cloud_chat_conversation/src/widgets/tencent_cloud_chat_conversation_item.dart';
 
 class TencentCloudChatConversationList extends StatefulWidget {
   final V2TimConversation? currentConversation;
@@ -119,9 +119,7 @@ class TencentCloudChatConversationListState extends TencentCloudChatState<Tencen
   }
 
   Widget _noConversationWidget() {
-    return Center(
-      child: Text(tL10n.noConversation),
-    );
+    return const SizedBox.shrink();
   }
 
   Widget _conversationLoading() {
@@ -130,13 +128,40 @@ class TencentCloudChatConversationListState extends TencentCloudChatState<Tencen
 
   @override
   Widget defaultBuilder(BuildContext context) {
-    var conversationList = _conversationList;
-    var loaded = _getDataEnd;
-    return TencentCloudChatThemeWidget(build: (ctx, colors, fontSize) {
-      if (!loaded) {
-        return _conversationLoading();
-      }
-      return conversationList.isNotEmpty ? conversationListWidget() : _noConversationWidget();
-    });
+    final conversationList = _conversationList;
+    final loaded = _getDataEnd;
+    return TencentCloudChatThemeWidget(
+      build: (ctx, colors, fontSize) {
+        if (!loaded) {
+          return SliverToBoxAdapter(child: _conversationLoading());
+        }
+        if (conversationList.isEmpty) {
+          return SliverToBoxAdapter(
+            child: _noConversationWidget(),
+          );
+        }
+
+        return SliverList(
+          delegate: SliverChildBuilderDelegate(
+                (context, index) {
+              final conversation = conversationList[index];
+              final isOnline = getIsOnline(conversation);
+
+              return TencentCloudChatConversationItem(
+                conversation: conversation,
+                isOnline: isOnline,
+                isSelected:
+                widget.currentConversation?.conversationID == conversation.conversationID &&
+                    TencentCloudChatUtils.checkString(
+                      widget.currentConversation?.conversationID,
+                    ) !=
+                        null,
+              );
+            },
+            childCount: conversationList.length,
+          ),
+        );
+      },
+    );
   }
 }

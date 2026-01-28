@@ -33,7 +33,7 @@ class _TencentCloudChatConversationDesktopSearchAndAddState
                       onTap: () async {},
                       child: Container(
                         decoration: BoxDecoration(
-                          color: colorTheme.dividerColor.withOpacity(0.36),
+                          color: colorTheme.dividerColor.withValues(alpha: 0.36),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(4)),
                         ),

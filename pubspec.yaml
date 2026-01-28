@@ -11,8 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
   tencent_cloud_chat_common: 4.1.0+3
-  adaptive_action_sheet: 2.0.4
-  flutter_swipe_action_cell: 3.1.6
 
 dev_dependencies:
   flutter_test:

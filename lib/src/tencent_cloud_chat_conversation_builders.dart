@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:tencent_cloud_chat_common/components/components_definition/tencent_cloud_chat_component_builder.dart';
 import 'package:tencent_cloud_chat_common/data/conversation/tencent_cloud_chat_conversation_data.dart';
 import 'package:tencent_cloud_chat_common/tencent_cloud_chat.dart';
-import 'package:tencent_cloud_chat_conversation/widgets/tencent_cloud_chat_conversation_app_bar.dart';
-import 'package:tencent_cloud_chat_conversation/widgets/tencent_cloud_chat_conversation_item.dart';
+import 'package:tencent_cloud_chat_conversation/src/widgets/tencent_cloud_chat_conversation_app_bar.dart';
+import 'package:tencent_cloud_chat_conversation/src/widgets/tencent_cloud_chat_conversation_item.dart';
 
 /// When ConversationItemAvatarBuilder returns the widget, the widget will be used for rendering. When the return value is null, the UIKit default component will be used for rendering.
 typedef ConversationItemAvatarBuilder = Widget? Function(
