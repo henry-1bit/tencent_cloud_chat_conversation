@@ -20,8 +20,6 @@ import 'package:tencent_cloud_chat_conversation/src/tencent_cloud_chat_conversat
 import 'package:tencent_cloud_chat_conversation/src/widgets/tencent_cloud_chat_conversation_app_bar.dart';
 import 'package:tencent_cloud_chat_conversation/src/widgets/tencent_cloud_chat_conversation_list.dart';
 
-import '../src/desktop/tencent_cloud_chat_conversation_desktop_mode.dart';
-
 class TencentCloudChatConversation extends TencentCloudChatComponent<
     TencentCloudChatConversationOptions,
     TencentCloudChatConversationConfig,
@@ -229,19 +227,6 @@ class TencentCloudChatConversationState extends TencentCloudChatState<TencentClo
         ),
       );
     }
-  }
-
-  @override
-  Widget desktopBuilder(BuildContext context) {
-    if (_useDesktopMode) {
-      return TencentCloudChatThemeWidget(
-        build: (context, colorTheme, textStyle) => const Material(
-          color: Colors.transparent,
-          child: TencentCloudChatConversationDesktopMode(),
-        ),
-      );
-    }
-    return mobileBuilder(context);
   }
 }
 
